@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-120202.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203727@2x.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203747@2x.png">
-<meta property="og:updated_time" content="2019-07-17T06:50:11.693Z">
+<meta property="og:updated_time" content="2019-07-17T09:59:30.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用certbot搭建免费的https">
 <meta name="twitter:description" content="为什么需要httpshttp协议下,信息是明文传输,不提供加密,传输被拦截时,可直接读懂其中的信息,存在安全隐患.而https就是为了解决这一缺陷,再http基础上加入了ssl协议,依靠证书来验证服务器身份,并未与浏览器之间的通讯加密.现在都网站基本上都是用了https加密">
@@ -363,7 +363,8 @@
 <a id="more"></a>
 <h2 id="免费的ca证书"><a href="#免费的ca证书" class="headerlink" title="免费的ca证书"></a>免费的ca证书</h2><p>https加密必不可少的就是ca证书<br>由于https涉及到中间机构的校验,很多ca证书提供商都是收费的,当然其中也有免费提供的<br>Let’s Encrypt就是其中之一的免费提供商,他使用ACME协议来申请SSL证书,申请的时候需要验证服务器端所有权和管理权,保证了SSL证书获取途径的唯一性和安全性</p>
 <h2 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h2><p>Certbot是官方出的一个ACME客户端,大大的简化了申请流程,达到快速部署的目的<br>部署流程:<br>进入 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a> 选择你当前使用的web服务器和操作系统<br>这里以nginx和centos7为例</p>
-<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-114103@2x.png" alt><br>选择之后下方会出现对应的操作流程,按照上面的流程基本上可以很顺利的完成操作<br>首先我们确保环境符合需求 centos7需要安装epel</p>
+<img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-114103@2x.png">
+<p>选择之后下方会出现对应的操作流程,按照上面的流程基本上可以很顺利的完成操作<br>首先我们确保环境符合需求 centos7需要安装epel</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure>
 
 <p>最后执行安装:</p>
@@ -373,18 +374,27 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
 
 <p>在这之前要保证你的域名已经正确的配置在nginx中</p>
-<p>第一步会读取nginx中配置的域名 让你选择一个或多个<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115647.png" alt><br>第二步会询问你是否帮你把http请求重定向到https 一般都会选择是<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115737.png" alt><br>到这里就成功了 可以访问自己的域名,看看有没有加上证书<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-120202.png" alt></p>
+<p>第一步会读取nginx中配置的域名 让你选择一个或多个</p>
+<img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115647.png">
+<p>第二步会询问你是否帮你把http请求重定向到https 一般都会选择是</p>
+<img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115737.png">
+<p>到这里就成功了 可以访问自己的域名,看看有没有加上证书</p>
+<img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-120202.png">
+
+
 <h2 id="证书更新"><a href="#证书更新" class="headerlink" title="证书更新"></a>证书更新</h2><p>由于Let’s Encrypt的证书有效期只有90天,而在剩余时间小于一个月时才可以更新,所以官方建议使用crontab自动更新</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;0 0,12 * * * root python -c &apos;import random; import time; time.sleep(random.random() * 3600)&apos; &amp;&amp; certbot renew&quot; | sudo tee -a /etc/crontab &gt; /dev/null</span><br></pre></td></tr></table></figure>
 
 <p>当然你也可以选择使用<code>certbot renew</code>命令来手动更新</p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203727@2x.png" alt><br>一开始以为是模块缺失 后来才发现是版本问题</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203727@2x.png">
+<p>一开始以为是模块缺失 后来才发现是版本问题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip list 2&gt;/dev/null | grep requests</span><br><span class="line">rpm -q python-requests --queryformat &apos;%&#123;VERSION&#125;\n&apos;</span><br></pre></td></tr></table></figure>
 
 <p>以上两个命令查询出的版本不一致 重装即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade --force-reinstall &apos;requests==2.6.0&apos;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203747@2x.png" alt><br>这里也是版本问题 重新安装合适的版本</p>
+<img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203747@2x.png">
+<p>这里也是版本问题 重新安装合适的版本</p>
 
       
     </div>
