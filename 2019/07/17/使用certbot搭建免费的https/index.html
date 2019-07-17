@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="gitlab,">
+  <meta name="keywords" content="https,">
 
 
 
@@ -79,25 +79,25 @@
 
 
 
-<meta name="description" content="gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:通过组群对用户进行管理利用分组（Groups）管理权限，有时候项目比较大，往往一个项目下包含多个开发工程，如果分别给参与这些工程的人员进行授权的话，比较繁琐，而利用Groups分组的功能，可以将若干个项目成员放入同一个分组，这样此分组的git工程将自动继承分组的权限设置，只需要设置一次即可，如果有特例仍然可以在具体的git">
-<meta name="keywords" content="gitlab">
+<meta name="description" content="为什么需要httpshttp协议下,信息是明文传输,不提供加密,传输被拦截时,可直接读懂其中的信息,存在安全隐患.而https就是为了解决这一缺陷,再http基础上加入了ssl协议,依靠证书来验证服务器身份,并未与浏览器之间的通讯加密.现在都网站基本上都是用了https加密">
+<meta name="keywords" content="https">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gitlab-常用功能总结">
-<meta property="og:url" content="http://ppsnake.coding.me/2018/09/03/gitlab-常用功能总结/index.html">
+<meta property="og:title" content="使用certbot搭建免费的https">
+<meta property="og:url" content="http://ppsnake.coding.me/2019/07/17/使用certbot搭建免费的https/index.html">
 <meta property="og:site_name" content="不吃香菜">
-<meta property="og:description" content="gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:通过组群对用户进行管理利用分组（Groups）管理权限，有时候项目比较大，往往一个项目下包含多个开发工程，如果分别给参与这些工程的人员进行授权的话，比较繁琐，而利用Groups分组的功能，可以将若干个项目成员放入同一个分组，这样此分组的git工程将自动继承分组的权限设置，只需要设置一次即可，如果有特例仍然可以在具体的git">
+<meta property="og:description" content="为什么需要httpshttp协议下,信息是明文传输,不提供加密,传输被拦截时,可直接读懂其中的信息,存在安全隐患.而https就是为了解决这一缺陷,再http基础上加入了ssl协议,依靠证书来验证服务器身份,并未与浏览器之间的通讯加密.现在都网站基本上都是用了https加密">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111407.png">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111043.png">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-112406.png">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-145225.png">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-115330.png">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/auto-devops.png">
-<meta property="og:updated_time" content="2018-09-03T07:32:16.000Z">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-114103@2x.png">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115647.png">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115737.png">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-120202.png">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203727@2x.png">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203747@2x.png">
+<meta property="og:updated_time" content="2019-07-17T06:50:11.693Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gitlab-常用功能总结">
-<meta name="twitter:description" content="gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:通过组群对用户进行管理利用分组（Groups）管理权限，有时候项目比较大，往往一个项目下包含多个开发工程，如果分别给参与这些工程的人员进行授权的话，比较繁琐，而利用Groups分组的功能，可以将若干个项目成员放入同一个分组，这样此分组的git工程将自动继承分组的权限设置，只需要设置一次即可，如果有特例仍然可以在具体的git">
-<meta name="twitter:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111407.png">
+<meta name="twitter:title" content="使用certbot搭建免费的https">
+<meta name="twitter:description" content="为什么需要httpshttp协议下,信息是明文传输,不提供加密,传输被拦截时,可直接读懂其中的信息,存在安全隐患.而https就是为了解决这一缺陷,再http基础上加入了ssl协议,依靠证书来验证服务器身份,并未与浏览器之间的通讯加密.现在都网站基本上都是用了https加密">
+<meta name="twitter:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-114103@2x.png">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://ppsnake.coding.me/2018/09/03/gitlab-常用功能总结/">
+  <link rel="canonical" href="http://ppsnake.coding.me/2019/07/17/使用certbot搭建免费的https/">
 
 
 
 
 
-  <title>gitlab-常用功能总结 | 不吃香菜</title>
+  <title>使用certbot搭建免费的https | 不吃香菜</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ppsnake.coding.me/2018/09/03/gitlab-常用功能总结/">
+    <link itemprop="mainEntityOfPage" href="http://ppsnake.coding.me/2019/07/17/使用certbot搭建免费的https/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PP">
@@ -287,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">gitlab-常用功能总结</h1>
+          <h1 class="post-title" itemprop="name headline">使用certbot搭建免费的https</h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T11:58:28+08:00">
-                2018-09-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-17T11:18:43+08:00">
+                2019-07-17
               </time>
             
 
@@ -322,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
+                  <a href="/categories/https/" itemprop="url" rel="index">
+                    <span itemprop="name">https</span>
                   </a>
                 </span>
 
@@ -359,18 +359,32 @@
       
 
       
-        <h3 id="gitlab是仿照github做出来的-但是-gitlab-拥有更多的功能"><a href="#gitlab是仿照github做出来的-但是-gitlab-拥有更多的功能" class="headerlink" title="gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:"></a>gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:</h3><h4 id="通过组群对用户进行管理"><a href="#通过组群对用户进行管理" class="headerlink" title="通过组群对用户进行管理"></a>通过组群对用户进行管理</h4><p>利用分组（Groups）管理权限，有时候项目比较大，往往一个项目下包含多个开发工程，如果分别给参与这些工程的人员进行授权的话，比较繁琐，而利用Groups分组的功能，可以将若干个项目成员放入同一个分组，这样此分组的git工程将自动继承分组的权限设置，只需要设置一次即可，如果有特例仍然可以在具体的git工程下进行特殊设置，比较灵活。<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111407.png" alt></p>
+        <h2 id="为什么需要https"><a href="#为什么需要https" class="headerlink" title="为什么需要https"></a>为什么需要https</h2><p>http协议下,信息是明文传输,不提供加密,传输被拦截时,可直接读懂其中的信息,存在安全隐患.<br>而https就是为了解决这一缺陷,再http基础上加入了ssl协议,依靠证书来验证服务器身份,并未与浏览器之间的通讯加密.<br>现在都网站基本上都是用了https加密</p>
 <a id="more"></a>
-<h4 id="代码片段分享-Snippets"><a href="#代码片段分享-Snippets" class="headerlink" title="代码片段分享(Snippets)"></a>代码片段分享(Snippets)</h4><p>允许用户分享一个project的部分代码,而不是整个项目.每个人都可以将自己常用的代码片段保存到系统并分享给大家,比自己留在本地电脑上要方便很多,而且能发挥这些片段的最大价值.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111043.png" alt></p>
-<h4 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理:"></a>权限管理:</h4><ul>
-<li>分支保护,它们允许用户设置project的获取权限,所以一个团队中只有特定的人可以pull,push或者删除一个分支的代码.</li>
-<li>Authentication levels更进一步的提升安全性，允许用户给人读写以外的权限。举例来说，你可以给一个组员跟踪变动的权限却不给他获取代码的权限。</li>
-</ul>
-<h4 id="Work-In-Progress"><a href="#Work-In-Progress" class="headerlink" title="Work In Progress:"></a>Work In Progress:</h4><p>在发起合并请求时,开发者通过打上’WIP(仍在进行中)’状态标签让其他成员知道代码没有完成,从而阻止未完成的代码合并到其他的代码中<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-112406.png" alt></p>
-<h4 id="邮件功能"><a href="#邮件功能" class="headerlink" title="邮件功能"></a>邮件功能</h4><p>邮件是GitLab不得不配置的一块,它提供了代码提交提醒,用户密码找回等功能.<br>通过邮件我们可以对其他成员的操作做出及时的响应,比如新发起的Merge Requests,新的讨论信息等等.</p>
-<h4 id="Merge-Requests中的Discussion"><a href="#Merge-Requests中的Discussion" class="headerlink" title="Merge Requests中的Discussion:"></a>Merge Requests中的Discussion:</h4><p>利用讨论(Discussion)进行代码评审(code review),每当有人进行了提交之后,在系统的信息流上都可以看到这个提交的具体改动,作为项目技术负责人可以及时的了解提交情况,并针对此次提价的代码修改内容进行评论,可以细化到每一行,评论的信息系统会自动发送邮件给相关负责人,可以重复利用这个特性来做代码评审.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-145225.png" alt></p>
-<h4 id="webhook"><a href="#webhook" class="headerlink" title="webhook:"></a>webhook:</h4><p>webhook是一个web自定义回调函数,当程序出现特定行为时会调用指定的url.<br>在gitlab中一般会搭配jenkins使用,目的是在提交代码至指定分支或tag后,自动触发jenkins自动构建项目并发布到测试环境,从而避免重复性的人肉部署,实现持续集成<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-115330.png" alt></p>
-<h4 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps:"></a>DevOps:</h4><p>新版本的gitlab更新重点放在简化内部构建的持续交付流程,提供自动化的服务上.<br>这是一个原本就构建在系统内服务,提供完整的CI/CD功能,其涵盖了整个端到端代码的生命周期,让开发者只需进行提交代码的动作,接下来的工作便由系统接手,包括构建、测试、代码品质扫描、安全性扫描、授权扫描、封装、效能测试、部署,一直到应用上线后,Auto DevOps还会监控执行状态.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/auto-devops.png" alt></p>
+<h2 id="免费的ca证书"><a href="#免费的ca证书" class="headerlink" title="免费的ca证书"></a>免费的ca证书</h2><p>https加密必不可少的就是ca证书<br>由于https涉及到中间机构的校验,很多ca证书提供商都是收费的,当然其中也有免费提供的<br>Let’s Encrypt就是其中之一的免费提供商,他使用ACME协议来申请SSL证书,申请的时候需要验证服务器端所有权和管理权,保证了SSL证书获取途径的唯一性和安全性</p>
+<h2 id="Certbot"><a href="#Certbot" class="headerlink" title="Certbot"></a>Certbot</h2><p>Certbot是官方出的一个ACME客户端,大大的简化了申请流程,达到快速部署的目的<br>部署流程:<br>进入 <a href="https://certbot.eff.org/" target="_blank" rel="noopener">https://certbot.eff.org/</a> 选择你当前使用的web服务器和操作系统<br>这里以nginx和centos7为例</p>
+<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-114103@2x.png" alt><br>选择之后下方会出现对应的操作流程,按照上面的流程基本上可以很顺利的完成操作<br>首先我们确保环境符合需求 centos7需要安装epel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum -y install yum-utils</span><br><span class="line">yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional</span><br></pre></td></tr></table></figure>
+
+<p>最后执行安装:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot python2-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+<p>成功之后就可以进行证书申请与安装了:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
+
+<p>在这之前要保证你的域名已经正确的配置在nginx中</p>
+<p>第一步会读取nginx中配置的域名 让你选择一个或多个<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115647.png" alt><br>第二步会询问你是否帮你把http请求重定向到https 一般都会选择是<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-115737.png" alt><br>到这里就成功了 可以访问自己的域名,看看有没有加上证书<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190717-120202.png" alt></p>
+<h2 id="证书更新"><a href="#证书更新" class="headerlink" title="证书更新"></a>证书更新</h2><p>由于Let’s Encrypt的证书有效期只有90天,而在剩余时间小于一个月时才可以更新,所以官方建议使用crontab自动更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;0 0,12 * * * root python -c &apos;import random; import time; time.sleep(random.random() * 3600)&apos; &amp;&amp; certbot renew&quot; | sudo tee -a /etc/crontab &gt; /dev/null</span><br></pre></td></tr></table></figure>
+
+<p>当然你也可以选择使用<code>certbot renew</code>命令来手动更新</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203727@2x.png" alt><br>一开始以为是模块缺失 后来才发现是版本问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip list 2&gt;/dev/null | grep requests</span><br><span class="line">rpm -q python-requests --queryformat &apos;%&#123;VERSION&#125;\n&apos;</span><br></pre></td></tr></table></figure>
+
+<p>以上两个命令查询出的版本不一致 重装即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade --force-reinstall &apos;requests==2.6.0&apos;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20190716-203747@2x.png" alt><br>这里也是版本问题 重新安装合适的版本</p>
 
       
     </div>
@@ -388,7 +402,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
+            <a href="/tags/https/" rel="tag"># https</a>
           
         </div>
       
@@ -401,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/17/snowflake算法生成全局唯一id/" rel="next" title="snowflake算法生成全局唯一ID">
-                <i class="fa fa-chevron-left"></i> snowflake算法生成全局唯一ID
+              <a href="/2018/11/05/搭建elastic搜索/" rel="next" title="搭建elastic搜索">
+                <i class="fa fa-chevron-left"></i> 搭建elastic搜索
               </a>
             
           </div>
@@ -410,10 +424,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/05/搭建elastic搜索/" rel="prev" title="搭建elastic搜索">
-                搭建elastic搜索 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#gitlab是仿照github做出来的-但是-gitlab-拥有更多的功能"><span class="nav-number">1.</span> <span class="nav-text">gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过组群对用户进行管理"><span class="nav-number">1.1.</span> <span class="nav-text">通过组群对用户进行管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码片段分享-Snippets"><span class="nav-number">1.2.</span> <span class="nav-text">代码片段分享(Snippets)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限管理"><span class="nav-number">1.3.</span> <span class="nav-text">权限管理:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Work-In-Progress"><span class="nav-number">1.4.</span> <span class="nav-text">Work In Progress:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#邮件功能"><span class="nav-number">1.5.</span> <span class="nav-text">邮件功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Merge-Requests中的Discussion"><span class="nav-number">1.6.</span> <span class="nav-text">Merge Requests中的Discussion:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webhook"><span class="nav-number">1.7.</span> <span class="nav-text">webhook:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DevOps"><span class="nav-number">1.8.</span> <span class="nav-text">DevOps:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要https"><span class="nav-number">1.</span> <span class="nav-text">为什么需要https</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#免费的ca证书"><span class="nav-number">2.</span> <span class="nav-text">免费的ca证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Certbot"><span class="nav-number">3.</span> <span class="nav-text">Certbot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证书更新"><span class="nav-number">4.</span> <span class="nav-text">证书更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">5.</span> <span class="nav-text">遇到的问题</span></a></li></ol></div>
             
 
           </div>
