@@ -3,7 +3,7 @@
 NexT.utils = {
 
   /**
-   * Wrap images with fancybox support.
+   * Wrap images with fancybox support. 1
    */
   wrapImageWithFancyBox: function() {
     $('.content img')

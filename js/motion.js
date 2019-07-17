@@ -1,4 +1,4 @@
-/* global NexT, CONFIG */
+/* global NexT, CONFIG  1*/
 
 $(document).ready(function() {
   NexT.motion = {};
