@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="区块链,">
+  <meta name="keywords" content="区块链," />
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="https://pp-snake.com/2018/07/18/区块链的共识机制/">
+  <link rel="canonical" href="https://pp-snake.com/2018/07/18/区块链的共识机制/"/>
 
 
 
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">不吃香菜</span>
         <span class="logo-line-after"><i></i></span>
@@ -184,7 +184,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -194,7 +194,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -224,7 +224,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -267,7 +267,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PP">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/pp.gif">
     </span>
 
@@ -303,7 +303,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -354,9 +354,7 @@
       
         <p>之前我们说到的运作方式,打包和广播,正是区块链最核心的技术内容之一:共识机制</p>
 <h2 id="分布式系统的经典问题-拜占庭将军问题"><a href="#分布式系统的经典问题-拜占庭将军问题" class="headerlink" title="分布式系统的经典问题: 拜占庭将军问题"></a>分布式系统的经典问题: 拜占庭将军问题</h2><p><a href="https://baike.baidu.com/item/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98/265656?fr=aladdin" target="_blank" rel="noopener">拜占庭将军问题</a>是一个虚构出来的,可以方便通俗的介绍分布式系统所面临的难题.这边不做表述.</p>
-<p>我们还是回到村子当中,随着村子和人口的发展,大村子变成了十一个小村子,并分散在各地,村子间只能靠信鸽来通讯.<br>大家约定了每年都举办一个相亲大会,每年从 A 村或 B 村中选择一个,得票多的胜出.<br>由于村子相隔甚远,没办法靠一只信鸽传送到每个村子,这个就必须有个村子作为中转站来代为传输,也就意味着这个村子可以读到其他村子的投票信息.</p>
-<a id="more"></a>
-<p>那么,下面两个问题就会出现:</p>
+<p>我们还是回到村子当中,随着村子和人口的发展,大村子变成了十一个小村子,并分散在各地,村子间只能靠信鸽来通讯.<br>大家约定了每年都举办一个相亲大会,每年从 A 村或 B 村中选择一个,得票多的胜出.<br>由于村子相隔甚远,没办法靠一只信鸽传送到每个村子,这个就必须有个村子作为中转站来代为传输,也就意味着这个村子可以读到其他村子的投票信息.<br><a id="more"></a><br>那么,下面两个问题就会出现:</p>
 <ul>
 <li>村子的投票行为不一致,比如 E 村发送给一个村子说自己投了 A,但是对另外一个村子说自己投了 B</li>
 <li>中继村舞弊,篡改投票消息</li>
@@ -493,7 +491,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/pp.gif" alt="PP">
+              <img class="site-author-image" itemprop="image"
+                src="/images/pp.gif"
+                alt="PP" />
             
               <p class="site-author-name" itemprop="name">PP</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -517,7 +517,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

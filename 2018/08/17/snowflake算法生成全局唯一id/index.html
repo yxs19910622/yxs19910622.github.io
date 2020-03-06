@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="snowflake,雪花算法,">
+  <meta name="keywords" content="snowflake,雪花算法," />
 
 
 
@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="不吃香菜">
 <meta property="og:description" content="随着业务量的增加,单机下数据库的自增主键已经不能满足需求.考虑到以后的扩展性,可靠性以及对程序的易用性,需要新的ID生成方案. snowflake算法 snowflake是Twitter开源的分布式ID生成算法,整体长度通常是64位,适合使用 Java 中的 Long 类型进行储存.    其核心思想是：使用41bit作为毫秒数，10bit作为机器的ID（5个bit是数据中心，5个bit的机器ID">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/1.png">
-<meta property="og:updated_time" content="2019-07-16T09:13:11.149Z">
+<meta property="og:image" content="https://pp-snake.com/2018/08/17/snowflake算法生成全局唯一id/1.png">
+<meta property="og:updated_time" content="2018-08-17T05:03:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="snowflake算法生成全局唯一ID">
 <meta name="twitter:description" content="随着业务量的增加,单机下数据库的自增主键已经不能满足需求.考虑到以后的扩展性,可靠性以及对程序的易用性,需要新的ID生成方案. snowflake算法 snowflake是Twitter开源的分布式ID生成算法,整体长度通常是64位,适合使用 Java 中的 Long 类型进行储存.    其核心思想是：使用41bit作为毫秒数，10bit作为机器的ID（5个bit是数据中心，5个bit的机器ID">
-<meta name="twitter:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/1.png">
+<meta name="twitter:image" content="https://pp-snake.com/2018/08/17/snowflake算法生成全局唯一id/1.png">
 
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://pp-snake.com/2018/08/17/snowflake算法生成全局唯一id/">
+  <link rel="canonical" href="https://pp-snake.com/2018/08/17/snowflake算法生成全局唯一id/"/>
 
 
 
@@ -156,7 +156,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">不吃香菜</span>
         <span class="logo-line-after"><i></i></span>
@@ -186,7 +186,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -196,7 +196,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -206,7 +206,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -216,7 +216,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -226,7 +226,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -269,7 +269,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PP">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/pp.gif">
     </span>
 
@@ -305,7 +305,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -358,9 +358,7 @@
 <h3 id="snowflake算法"><a href="#snowflake算法" class="headerlink" title="snowflake算法"></a>snowflake算法</h3><blockquote>
 <p>snowflake是Twitter开源的分布式ID生成算法,整体长度通常是64位,适合使用 Java 中的 Long 类型进行储存.<br>    其核心思想是：使用41bit作为毫秒数，10bit作为机器的ID（5个bit是数据中心，5个bit的机器ID），12bit作为毫秒内的流水号（意味着每个节点在每毫秒可以产生 4096 个 ID），最后还有一个符号位，永远是0.</p>
 </blockquote>
-<img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/1.png">
-<a id="more"></a>
-<p>该算法实现的基本就是二进制</p>
+<p><img src="/2018/08/17/snowflake算法生成全局唯一id/1.png" alt=""><br><a id="more"></a><br>该算法实现的基本就是二进制</p>
 <ul>
 <li>标志位: 二进制中最高位为1的都是负数,但是我们生成的id一般都使用正整数,所以这个最高位固定是0</li>
 <li>41位: 用来记录时间戳<ul>
@@ -501,7 +499,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/pp.gif" alt="PP">
+              <img class="site-author-image" itemprop="image"
+                src="/images/pp.gif"
+                alt="PP" />
             
               <p class="site-author-name" itemprop="name">PP</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -525,7 +525,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

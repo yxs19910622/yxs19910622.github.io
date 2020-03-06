@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="gitlab,">
+  <meta name="keywords" content="gitlab," />
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="https://pp-snake.com/2018/09/03/gitlab-常用功能总结/">
+  <link rel="canonical" href="https://pp-snake.com/2018/09/03/gitlab-常用功能总结/"/>
 
 
 
@@ -161,7 +161,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">不吃香菜</span>
         <span class="logo-line-after"><i></i></span>
@@ -191,7 +191,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -201,7 +201,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -211,7 +211,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -221,7 +221,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -231,7 +231,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -274,7 +274,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PP">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/pp.gif">
     </span>
 
@@ -310,7 +310,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -359,18 +359,17 @@
       
 
       
-        <h3 id="gitlab是仿照github做出来的-但是-gitlab-拥有更多的功能"><a href="#gitlab是仿照github做出来的-但是-gitlab-拥有更多的功能" class="headerlink" title="gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:"></a>gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:</h3><h4 id="通过组群对用户进行管理"><a href="#通过组群对用户进行管理" class="headerlink" title="通过组群对用户进行管理"></a>通过组群对用户进行管理</h4><p>利用分组（Groups）管理权限，有时候项目比较大，往往一个项目下包含多个开发工程，如果分别给参与这些工程的人员进行授权的话，比较繁琐，而利用Groups分组的功能，可以将若干个项目成员放入同一个分组，这样此分组的git工程将自动继承分组的权限设置，只需要设置一次即可，如果有特例仍然可以在具体的git工程下进行特殊设置，比较灵活。<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111407.png" alt></p>
-<a id="more"></a>
-<h4 id="代码片段分享-Snippets"><a href="#代码片段分享-Snippets" class="headerlink" title="代码片段分享(Snippets)"></a>代码片段分享(Snippets)</h4><p>允许用户分享一个project的部分代码,而不是整个项目.每个人都可以将自己常用的代码片段保存到系统并分享给大家,比自己留在本地电脑上要方便很多,而且能发挥这些片段的最大价值.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111043.png" alt></p>
+        <h3 id="gitlab是仿照github做出来的-但是-gitlab-拥有更多的功能"><a href="#gitlab是仿照github做出来的-但是-gitlab-拥有更多的功能" class="headerlink" title="gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:"></a>gitlab是仿照github做出来的,但是 gitlab 拥有更多的功能:</h3><h4 id="通过组群对用户进行管理"><a href="#通过组群对用户进行管理" class="headerlink" title="通过组群对用户进行管理"></a>通过组群对用户进行管理</h4><p>利用分组（Groups）管理权限，有时候项目比较大，往往一个项目下包含多个开发工程，如果分别给参与这些工程的人员进行授权的话，比较繁琐，而利用Groups分组的功能，可以将若干个项目成员放入同一个分组，这样此分组的git工程将自动继承分组的权限设置，只需要设置一次即可，如果有特例仍然可以在具体的git工程下进行特殊设置，比较灵活。<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111407.png" alt=""><br><a id="more"></a></p>
+<h4 id="代码片段分享-Snippets"><a href="#代码片段分享-Snippets" class="headerlink" title="代码片段分享(Snippets)"></a>代码片段分享(Snippets)</h4><p>允许用户分享一个project的部分代码,而不是整个项目.每个人都可以将自己常用的代码片段保存到系统并分享给大家,比自己留在本地电脑上要方便很多,而且能发挥这些片段的最大价值.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-111043.png" alt=""></p>
 <h4 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理:"></a>权限管理:</h4><ul>
 <li>分支保护,它们允许用户设置project的获取权限,所以一个团队中只有特定的人可以pull,push或者删除一个分支的代码.</li>
 <li>Authentication levels更进一步的提升安全性，允许用户给人读写以外的权限。举例来说，你可以给一个组员跟踪变动的权限却不给他获取代码的权限。</li>
 </ul>
-<h4 id="Work-In-Progress"><a href="#Work-In-Progress" class="headerlink" title="Work In Progress:"></a>Work In Progress:</h4><p>在发起合并请求时,开发者通过打上’WIP(仍在进行中)’状态标签让其他成员知道代码没有完成,从而阻止未完成的代码合并到其他的代码中<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-112406.png" alt></p>
+<h4 id="Work-In-Progress"><a href="#Work-In-Progress" class="headerlink" title="Work In Progress:"></a>Work In Progress:</h4><p>在发起合并请求时,开发者通过打上’WIP(仍在进行中)’状态标签让其他成员知道代码没有完成,从而阻止未完成的代码合并到其他的代码中<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-112406.png" alt=""></p>
 <h4 id="邮件功能"><a href="#邮件功能" class="headerlink" title="邮件功能"></a>邮件功能</h4><p>邮件是GitLab不得不配置的一块,它提供了代码提交提醒,用户密码找回等功能.<br>通过邮件我们可以对其他成员的操作做出及时的响应,比如新发起的Merge Requests,新的讨论信息等等.</p>
-<h4 id="Merge-Requests中的Discussion"><a href="#Merge-Requests中的Discussion" class="headerlink" title="Merge Requests中的Discussion:"></a>Merge Requests中的Discussion:</h4><p>利用讨论(Discussion)进行代码评审(code review),每当有人进行了提交之后,在系统的信息流上都可以看到这个提交的具体改动,作为项目技术负责人可以及时的了解提交情况,并针对此次提价的代码修改内容进行评论,可以细化到每一行,评论的信息系统会自动发送邮件给相关负责人,可以重复利用这个特性来做代码评审.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-145225.png" alt></p>
-<h4 id="webhook"><a href="#webhook" class="headerlink" title="webhook:"></a>webhook:</h4><p>webhook是一个web自定义回调函数,当程序出现特定行为时会调用指定的url.<br>在gitlab中一般会搭配jenkins使用,目的是在提交代码至指定分支或tag后,自动触发jenkins自动构建项目并发布到测试环境,从而避免重复性的人肉部署,实现持续集成<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-115330.png" alt></p>
-<h4 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps:"></a>DevOps:</h4><p>新版本的gitlab更新重点放在简化内部构建的持续交付流程,提供自动化的服务上.<br>这是一个原本就构建在系统内服务,提供完整的CI/CD功能,其涵盖了整个端到端代码的生命周期,让开发者只需进行提交代码的动作,接下来的工作便由系统接手,包括构建、测试、代码品质扫描、安全性扫描、授权扫描、封装、效能测试、部署,一直到应用上线后,Auto DevOps还会监控执行状态.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/auto-devops.png" alt></p>
+<h4 id="Merge-Requests中的Discussion"><a href="#Merge-Requests中的Discussion" class="headerlink" title="Merge Requests中的Discussion:"></a>Merge Requests中的Discussion:</h4><p>利用讨论(Discussion)进行代码评审(code review),每当有人进行了提交之后,在系统的信息流上都可以看到这个提交的具体改动,作为项目技术负责人可以及时的了解提交情况,并针对此次提价的代码修改内容进行评论,可以细化到每一行,评论的信息系统会自动发送邮件给相关负责人,可以重复利用这个特性来做代码评审.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-145225.png" alt=""></p>
+<h4 id="webhook"><a href="#webhook" class="headerlink" title="webhook:"></a>webhook:</h4><p>webhook是一个web自定义回调函数,当程序出现特定行为时会调用指定的url.<br>在gitlab中一般会搭配jenkins使用,目的是在提交代码至指定分支或tag后,自动触发jenkins自动构建项目并发布到测试环境,从而避免重复性的人肉部署,实现持续集成<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20180903-115330.png" alt=""></p>
+<h4 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps:"></a>DevOps:</h4><p>新版本的gitlab更新重点放在简化内部构建的持续交付流程,提供自动化的服务上.<br>这是一个原本就构建在系统内服务,提供完整的CI/CD功能,其涵盖了整个端到端代码的生命周期,让开发者只需进行提交代码的动作,接下来的工作便由系统接手,包括构建、测试、代码品质扫描、安全性扫描、授权扫描、封装、效能测试、部署,一直到应用上线后,Auto DevOps还会监控执行状态.<br><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/auto-devops.png" alt=""></p>
 
       
     </div>
@@ -479,7 +478,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/pp.gif" alt="PP">
+              <img class="site-author-image" itemprop="image"
+                src="/images/pp.gif"
+                alt="PP" />
             
               <p class="site-author-name" itemprop="name">PP</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -503,7 +504,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
