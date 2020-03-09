@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="-elastic," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="又重装了服务器,vpn也要重新搭建了,不过都忘了怎么装了,捯饬了半天 需求:143是服务器,145是数据库,他们之间用局域网连接,145没连外网,操作数据库需要先用vpn连接143,再访问145">
-<meta name="keywords" content="linux">
+<meta name="description" content="启动es默认使用1G内存后台压力大才发现的 只用了1G内存! 启动参数加 --Xms4g —Xmx4g logstash-jdbc 增量同步mysql因为原记录会被不断更新,一开始选择使用updateTime字段作为更新依据 在小批量数据下的测试和使用都没有发现问题 后台有次遇到大量数据需要被更新的情况,发现有几批数据迟迟没有被更新,之后的数据都被更新过了">
+<meta name="keywords" content="-elastic">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CentOS6.4 搭建pptpd vpn">
-<meta property="og:url" content="https://pp-snake.com/2014/06/26/CentOS6-4-搭建pptpd-vpn/index.html">
+<meta property="og:title" content="elastic踩坑记录">
+<meta property="og:url" content="https://pp-snake.com/2019/12/06/elastic踩坑记录/index.html">
 <meta property="og:site_name" content="不吃香菜">
-<meta property="og:description" content="又重装了服务器,vpn也要重新搭建了,不过都忘了怎么装了,捯饬了半天 需求:143是服务器,145是数据库,他们之间用局域网连接,145没连外网,操作数据库需要先用vpn连接143,再访问145">
+<meta property="og:description" content="启动es默认使用1G内存后台压力大才发现的 只用了1G内存! 启动参数加 --Xms4g —Xmx4g logstash-jdbc 增量同步mysql因为原记录会被不断更新,一开始选择使用updateTime字段作为更新依据 在小批量数据下的测试和使用都没有发现问题 后台有次遇到大量数据需要被更新的情况,发现有几批数据迟迟没有被更新,之后的数据都被更新过了">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-01T07:30:51.000Z">
+<meta property="og:updated_time" content="2020-03-06T06:07:31.601Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CentOS6.4 搭建pptpd vpn">
-<meta name="twitter:description" content="又重装了服务器,vpn也要重新搭建了,不过都忘了怎么装了,捯饬了半天 需求:143是服务器,145是数据库,他们之间用局域网连接,145没连外网,操作数据库需要先用vpn连接143,再访问145">
+<meta name="twitter:title" content="elastic踩坑记录">
+<meta name="twitter:description" content="启动es默认使用1G内存后台压力大才发现的 只用了1G内存! 启动参数加 --Xms4g —Xmx4g logstash-jdbc 增量同步mysql因为原记录会被不断更新,一开始选择使用updateTime字段作为更新依据 在小批量数据下的测试和使用都没有发现问题 后台有次遇到大量数据需要被更新的情况,发现有几批数据迟迟没有被更新,之后的数据都被更新过了">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://pp-snake.com/2014/06/26/CentOS6-4-搭建pptpd-vpn/"/>
+  <link rel="canonical" href="https://pp-snake.com/2019/12/06/elastic踩坑记录/"/>
 
 
 
 
 
-  <title>CentOS6.4 搭建pptpd vpn | 不吃香菜</title>
+  <title>elastic踩坑记录 | 不吃香菜</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pp-snake.com/2014/06/26/CentOS6-4-搭建pptpd-vpn/">
+    <link itemprop="mainEntityOfPage" href="https://pp-snake.com/2019/12/06/elastic踩坑记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PP">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CentOS6.4 搭建pptpd vpn</h1>
+          <h1 class="post-title" itemprop="name headline">elastic踩坑记录</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-26T17:11:44+08:00">
-                2014-06-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-06T13:00:08+08:00">
+                2019-12-06
               </time>
             
 
@@ -302,28 +302,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -352,16 +330,22 @@
       
 
       
-        <p>又重装了服务器,vpn也要重新搭建了,不过都忘了怎么装了,捯饬了半天</p>
-<p>需求:143是服务器,145是数据库,他们之间用局域网连接,145没连外网,操作数据库需要先用vpn连接143,再访问145<br><a id="more"></a><br>网上找了几个版本,最后发现这个一键安装的很好用</p>
-<p>wget <a href="http://www.hi-vps.com/shell/vpn_centos6.sh" target="_blank" rel="noopener">http://www.hi-vps.com/shell/vpn_centos6.sh</a><br>chmod a+x vpn_centos6.sh<br>bash vpn_centos6.sh</p>
-<p>出现3个选项  输入1回车是安装<br>最后提示安装成功,并显示账号密码</p>
-<p>之后进入 /etc/pptpd.conf<br>修改ip:<br>localip 192.168.101.17 //这里填的是143的内网ip地址<br>remoteip 192.168.101.1-16 //这里是给vpn连接的电脑分配的ip段</p>
-<p>关于/etc/ppp/options.pptpd里的dns,我没有动</p>
-<p>最后设置转发<br>iptables -t nat -A POSTROUTING -s 192.168.101.1/16 -o eth1 -j MASQUERADE<br>地址段对应上面那一段 eth1是我内网的网卡</p>
-<p>之后在自己的电脑上建立vpn连接,连接到143, ping 192.168.101.18(数据库内网地址),通了</p>
-<p>最后用plsqldev连数据库 可用 over</p>
-
+        <h3 id="启动es默认使用1G内存"><a href="#启动es默认使用1G内存" class="headerlink" title="启动es默认使用1G内存"></a>启动es默认使用1G内存</h3><p>后台压力大才发现的 只用了1G内存!</p>
+<p>启动参数加 <code>--Xms4g —Xmx4g</code></p>
+<h3 id="logstash-jdbc-增量同步mysql"><a href="#logstash-jdbc-增量同步mysql" class="headerlink" title="logstash-jdbc 增量同步mysql"></a>logstash-jdbc 增量同步mysql</h3><p>因为原记录会被不断更新,一开始选择使用updateTime字段作为更新依据</p>
+<p>在小批量数据下的测试和使用都没有发现问题</p>
+<p>后台有次遇到大量数据需要被更新的情况,发现有几批数据迟迟没有被更新,之后的数据都被更新过了</p>
+<a id="more"></a>
+<p>经过思考发现:</p>
+<p>sql_last_value使用时间戳时,多条数据时间戳一致,会导致更新时的数据遗漏</p>
+<p>比如当前时间戳的数据有101条 此次更新limit 100 进入下次更新时sql_last_value也被更新 就会有1条数据遗漏</p>
+<p>解决办法是使用自己实现的id生成器代替时间戳 保证生成数据在各个地方使用不重复,顺序递增并且生成效率高</p>
+<p>这里使用的雪花算法</p>
+<h3 id="elastic聚合查询结果数量限制"><a href="#elastic聚合查询结果数量限制" class="headerlink" title="elastic聚合查询结果数量限制"></a>elastic聚合查询结果数量限制</h3><p>使用聚合查询时发现的,聚合结果最多就只有10条数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Sets the size - indicating how many term buckets should be returned (defaults to 10)</span><br><span class="line"> */</span><br><span class="line">public TermsBuilder size(int size) &#123;</span><br><span class="line">    bucketCountThresholds.setRequiredSize(size);</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>源码中显示聚合查询默认返回十条,需要更多的话要自己指定size</p>
+<p>试了<code>size:0</code> 和 <code>size:1</code> 试图返回全部 结果报错 只能根据自己的大致范围来设置了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&quot;aggs&quot;: &#123;</span><br><span class="line">	&quot;province&quot;: &#123;</span><br><span class="line">		&quot;terms&quot;: &#123;</span><br><span class="line">			&quot;field&quot;: &quot;province&quot;,</span><br><span class="line">			&quot;size&quot;: 50</span><br><span class="line">		&#125;,</span><br><span class="line">		&quot;aggs&quot;: &#123;</span><br><span class="line">			&quot;city&quot;: &#123;</span><br><span class="line">				&quot;terms&quot;: &#123;</span><br><span class="line">					&quot;field&quot;: &quot;city&quot;,</span><br><span class="line">					&quot;size&quot;: 50</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -378,7 +362,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/elastic/" rel="tag"># -elastic</a>
           
         </div>
       
@@ -391,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/03/04/belrose/" rel="next" title="贝尔罗斯">
-                <i class="fa fa-chevron-left"></i> 贝尔罗斯
+              <a href="/2019/07/06/使用certbot搭建免费的https/" rel="next" title="使用certbot搭建免费的https">
+                <i class="fa fa-chevron-left"></i> 使用certbot搭建免费的https
               </a>
             
           </div>
@@ -401,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/08/比特币与区块链/" rel="prev" title="比特币与区块链">
-                比特币与区块链 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/06/三好学生VS校园小霸王/" rel="prev" title="三好学生VS校园小霸王">
+                三好学生VS校园小霸王 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -455,8 +439,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -520,6 +513,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动es默认使用1G内存"><span class="nav-number">1.</span> <span class="nav-text">启动es默认使用1G内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logstash-jdbc-增量同步mysql"><span class="nav-number">2.</span> <span class="nav-text">logstash-jdbc 增量同步mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elastic聚合查询结果数量限制"><span class="nav-number">3.</span> <span class="nav-text">elastic聚合查询结果数量限制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
