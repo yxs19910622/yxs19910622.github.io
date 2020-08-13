@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 ####kafka 系统架构图  如上">
+<meta name="description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 kafka系统架构图">
 <meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kafka概述">
 <meta property="og:url" content="https://pp-snake.com/2020/08/11/kafka概述/index.html">
 <meta property="og:site_name" content="不吃香菜">
-<meta property="og:description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 ####kafka 系统架构图  如上">
+<meta property="og:description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 kafka系统架构图">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20200811-112552@2x.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200811114641733.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200811114219473.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200811115343075.png">
-<meta property="og:updated_time" content="2020-08-13T03:22:58.337Z">
+<meta property="og:updated_time" content="2020-08-13T07:09:51.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka概述">
-<meta name="twitter:description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 ####kafka 系统架构图  如上">
+<meta name="twitter:description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 kafka系统架构图">
 <meta name="twitter:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20200811-112552@2x.png">
 
 
@@ -367,8 +367,8 @@ var _hmt = _hmt || [];
 
       
         <h4 id="kafka-简介"><a href="#kafka-简介" class="headerlink" title="kafka 简介"></a>kafka 简介</h4><p>Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。</p>
-<p>####kafka 系统架构图</p>
-<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20200811-112552@2x.png" alt="WX20200811-112552@2x"></p>
+<h4 id="kafka系统架构图"><a href="#kafka系统架构图" class="headerlink" title="kafka系统架构图"></a>kafka系统架构图</h4><p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20200811-112552@2x.png" alt="WX20200811-112552@2x"></p>
+<a id="more"></a>
 <p>如上图，一个kafka架构包括若干个Producer（服务器日志、业务数据、web前端产生的page view等），若干个Broker（kafka支持水平扩展，一般broker数量越多集群的吞吐量越大），若干个consumer group，一个Zookeeper集群（kafka通过Zookeeper管理集群配置、选举leader、consumer group发生变化时进行rebalance）。</p>
 <ul>
 <li><p>主题和分区</p>
@@ -392,8 +392,7 @@ var _hmt = _hmt || [];
 <p>保留消息(在一定期限内)是 Kafka的一个重要特性。 Kafka broker默认的消息保留策略是这样的: 要么保留一段时间(比如7天)，要么保留到消息达到一定大小的字节数(比如1GB)。当消息数量达到这些上限时，旧消息就会过期并被删除，所以在任何时刻， 可用消息的总量都不会超过配置参数所指定的大小。</p>
 </li>
 </ul>
-<p>####kafka 高吞吐率实现</p>
-<p>Kafka 与其它 MQ 相比，其最大的特点就是高吞吐率。为了增加存储能力，Kafka 将所有的消息都写入到了低速大容的硬盘。按理说，这将导致性能损失，但实际上，kafka 仍可保持超高的吞吐率，性能并未受到影响。其主要采用了如下的方式实现了高吞吐率。</p>
+<h4 id="kafka高吞吐率的实现"><a href="#kafka高吞吐率的实现" class="headerlink" title="kafka高吞吐率的实现"></a>kafka高吞吐率的实现</h4><p>Kafka 与其它 MQ 相比，其最大的特点就是高吞吐率。为了增加存储能力，Kafka 将所有的消息都写入到了低速大容的硬盘。按理说，这将导致性能损失，但实际上，kafka 仍可保持超高的吞吐率，性能并未受到影响。其主要采用了如下的方式实现了高吞吐率。</p>
 <ul>
 <li><p>顺序读写: Kafka将消息写入到了分区partition中，而分区中消息是顺序读写的。顺序</p>
 <p>读写要远快于随机读写。</p>
@@ -586,7 +585,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#kafka-简介"><span class="nav-number">1.</span> <span class="nav-text">kafka 简介</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#kafka-简介"><span class="nav-number">1.</span> <span class="nav-text">kafka 简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kafka系统架构图"><span class="nav-number">2.</span> <span class="nav-text">kafka系统架构图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kafka高吞吐率的实现"><span class="nav-number">3.</span> <span class="nav-text">kafka高吞吐率的实现</span></a></li></ol></div>
             
 
           </div>

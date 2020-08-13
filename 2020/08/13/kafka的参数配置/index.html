@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Kafka集群的参数配置，应该是使用过程中最重要的，有些配置的重要性并未体现在官方文档中，并且从实际表现看，很多参数对系统的影响要比从文档上看更加明显. ####Broker 端参数  log.dirs : 肥肠重要的参数, 指定了 Broker 需要使用的若干个文件目录路径 在线上生产环境中一定要为log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/da">
+<meta name="description" content="Kafka集群的参数配置，应该是使用过程中最重要的，有些配置的重要性并未体现在官方文档中，并且从实际表现看，很多参数对系统的影响要比从文档上看更加明显. Broker端参数 log.dirs : 肥肠重要的参数, 指定了 Broker 需要使用的若干个文件目录路径 在线上生产环境中一定要为log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/data/kaf">
 <meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kafka的参数配置">
 <meta property="og:url" content="https://pp-snake.com/2020/08/13/kafka的参数配置/index.html">
 <meta property="og:site_name" content="不吃香菜">
-<meta property="og:description" content="Kafka集群的参数配置，应该是使用过程中最重要的，有些配置的重要性并未体现在官方文档中，并且从实际表现看，很多参数对系统的影响要比从文档上看更加明显. ####Broker 端参数  log.dirs : 肥肠重要的参数, 指定了 Broker 需要使用的若干个文件目录路径 在线上生产环境中一定要为log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/da">
+<meta property="og:description" content="Kafka集群的参数配置，应该是使用过程中最重要的，有些配置的重要性并未体现在官方文档中，并且从实际表现看，很多参数对系统的影响要比从文档上看更加明显. Broker端参数 log.dirs : 肥肠重要的参数, 指定了 Broker 需要使用的若干个文件目录路径 在线上生产环境中一定要为log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/data/kaf">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-13T07:03:14.647Z">
+<meta property="og:updated_time" content="2020-08-13T07:08:08.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka的参数配置">
-<meta name="twitter:description" content="Kafka集群的参数配置，应该是使用过程中最重要的，有些配置的重要性并未体现在官方文档中，并且从实际表现看，很多参数对系统的影响要比从文档上看更加明显. ####Broker 端参数  log.dirs : 肥肠重要的参数, 指定了 Broker 需要使用的若干个文件目录路径 在线上生产环境中一定要为log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/da">
+<meta name="twitter:description" content="Kafka集群的参数配置，应该是使用过程中最重要的，有些配置的重要性并未体现在官方文档中，并且从实际表现看，很多参数对系统的影响要比从文档上看更加明显. Broker端参数 log.dirs : 肥肠重要的参数, 指定了 Broker 需要使用的若干个文件目录路径 在线上生产环境中一定要为log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/data/kaf">
 
 
 
@@ -362,14 +362,14 @@ var _hmt = _hmt || [];
 
       
         <p>Kafka集群的参数配置，应该是使用过程中最重要的，有些配置的重要性并未体现在官方文档中，并且从实际表现看，很多参数对系统的影响要比从文档上看更加明显.</p>
-<p>####Broker 端参数</p>
-<ul>
+<h4 id="Broker端参数"><a href="#Broker端参数" class="headerlink" title="Broker端参数"></a>Broker端参数</h4><ul>
 <li><p>log.dirs : 肥肠重要的参数, 指定了 Broker 需要使用的若干个文件目录路径</p>
 <p>在线上生产环境中一定要为log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/data/kafka-logs1,/home/kafka-logs,/home/kafka-logs这样。如果有条件的话你最好保证这些目录挂载到不同的物理磁盘上。这样做有两个好处：</p>
 <ul>
 <li>提升读写性能：比起单块磁盘，多块物理磁盘同时读写数据有更高的吞吐量。</li>
 <li>能够实现故障转移：即 Failover。这是 Kafka 1.1 版本新引入的强大功能。要知道在以前，只要 Kafka Broker 使用的任何一块磁盘挂掉了，整个 Broker 进程都会关闭。但是自 1.1 开始，这种情况被修正了，坏掉的磁盘上的数据会自动地转移到其他正常的磁盘上，而且 Broker 还能正常工作。</li>
 </ul>
+<a id="more"></a>
 </li>
 <li><p>listeners : 告诉外部连接者要通过什么协议访问指定主机名和端口开放的 Kafka 服务。</p>
 </li>
@@ -590,7 +590,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Topic-级别参数"><span class="nav-number">1.</span> <span class="nav-text">Topic 级别参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统参数"><span class="nav-number">2.</span> <span class="nav-text">操作系统参数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Broker端参数"><span class="nav-number">1.</span> <span class="nav-text">Broker端参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Topic-级别参数"><span class="nav-number">2.</span> <span class="nav-text">Topic 级别参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统参数"><span class="nav-number">3.</span> <span class="nav-text">操作系统参数</span></a></li></ol></div>
             
 
           </div>
