@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="瞎写," />
+  <meta name="keywords" content="kafka," />
 
 
 
@@ -79,20 +79,22 @@
 
 
 
-<meta name="description" content="今天是元宵节，蓝染和sellery在家自己做元宵吃，蓝染问sellery：老婆，你最喜欢吃什么馅的元宵啊？ sellery说：我最喜欢吃草莓，你呢？ 蓝染说：我最喜欢吃榴莲，要不咱们用草莓加上榴莲再加三瓶醋做一份元宵吧？ sellery一听：这个创意好！那咱们就开始吧。 于是蓝染开始钻木取火，sellery开始用少林功夫揉面…… 没多一会，蓝染和sellery就合伙做出了正方形的元宵，美味极了……">
-<meta name="keywords" content="瞎写">
+<meta name="description" content="生产者消息分区机制为什么分区其实分区的作用就是提供负载均衡的能力，或者说对数据进行分区的主要原因，就是为了实现系统的高伸缩性（Scalability）。不同的分区能够被放置到不同节点的机器上，而数据的读写操作也都是针对分区这个粒度而进行的，这样每个节点的机器都能独立地执行各自分区的读写请求处理。并且，我们还可以通过添加新的节点机器来增加整体系统的吞吐量。 分区策略 轮询策略 也称 Round-ro">
+<meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
-<meta property="og:title" content="今天谁洗碗">
-<meta property="og:url" content="https://pp-snake.com/2020/03/09/今天谁洗碗/index.html">
+<meta property="og:title" content="kafka分区机制及压缩算法">
+<meta property="og:url" content="https://pp-snake.com/2020/08/14/kafka分区机制及压缩算法/index.html">
 <meta property="og:site_name" content="不吃香菜">
-<meta property="og:description" content="今天是元宵节，蓝染和sellery在家自己做元宵吃，蓝染问sellery：老婆，你最喜欢吃什么馅的元宵啊？ sellery说：我最喜欢吃草莓，你呢？ 蓝染说：我最喜欢吃榴莲，要不咱们用草莓加上榴莲再加三瓶醋做一份元宵吧？ sellery一听：这个创意好！那咱们就开始吧。 于是蓝染开始钻木取火，sellery开始用少林功夫揉面…… 没多一会，蓝染和sellery就合伙做出了正方形的元宵，美味极了……">
+<meta property="og:description" content="生产者消息分区机制为什么分区其实分区的作用就是提供负载均衡的能力，或者说对数据进行分区的主要原因，就是为了实现系统的高伸缩性（Scalability）。不同的分区能够被放置到不同节点的机器上，而数据的读写操作也都是针对分区这个粒度而进行的，这样每个节点的机器都能独立地执行各自分区的读写请求处理。并且，我们还可以通过添加新的节点机器来增加整体系统的吞吐量。 分区策略 轮询策略 也称 Round-ro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/鹦鹉兄弟13.gif">
-<meta property="og:updated_time" content="2020-03-09T02:58:46.450Z">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/6c630aaf0b365115897231a4e0a7e1af.png">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/5b50b76efb8ada0f0779ac3275d215a3.png">
+<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/63aba008c3e3ad6b6dcc20464b600035.png">
+<meta property="og:updated_time" content="2020-08-17T02:34:13.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="今天谁洗碗">
-<meta name="twitter:description" content="今天是元宵节，蓝染和sellery在家自己做元宵吃，蓝染问sellery：老婆，你最喜欢吃什么馅的元宵啊？ sellery说：我最喜欢吃草莓，你呢？ 蓝染说：我最喜欢吃榴莲，要不咱们用草莓加上榴莲再加三瓶醋做一份元宵吧？ sellery一听：这个创意好！那咱们就开始吧。 于是蓝染开始钻木取火，sellery开始用少林功夫揉面…… 没多一会，蓝染和sellery就合伙做出了正方形的元宵，美味极了……">
-<meta name="twitter:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/鹦鹉兄弟13.gif">
+<meta name="twitter:title" content="kafka分区机制及压缩算法">
+<meta name="twitter:description" content="生产者消息分区机制为什么分区其实分区的作用就是提供负载均衡的能力，或者说对数据进行分区的主要原因，就是为了实现系统的高伸缩性（Scalability）。不同的分区能够被放置到不同节点的机器上，而数据的读写操作也都是针对分区这个粒度而进行的，这样每个节点的机器都能独立地执行各自分区的读写请求处理。并且，我们还可以通过添加新的节点机器来增加整体系统的吞吐量。 分区策略 轮询策略 也称 Round-ro">
+<meta name="twitter:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/6c630aaf0b365115897231a4e0a7e1af.png">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://pp-snake.com/2020/03/09/今天谁洗碗/"/>
+  <link rel="canonical" href="https://pp-snake.com/2020/08/14/kafka分区机制及压缩算法/"/>
 
 
 
 
 
-  <title>今天谁洗碗 | 不吃香菜</title>
+  <title>kafka分区机制及压缩算法 | 不吃香菜</title>
   
 
 
@@ -275,7 +277,7 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pp-snake.com/2020/03/09/今天谁洗碗/">
+    <link itemprop="mainEntityOfPage" href="https://pp-snake.com/2020/08/14/kafka分区机制及压缩算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="PP">
@@ -292,7 +294,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h1 class="post-title" itemprop="name headline">今天谁洗碗</h1>
+          <h1 class="post-title" itemprop="name headline">kafka分区机制及压缩算法</h1>
         
 
         <div class="post-meta">
@@ -304,8 +306,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T10:52:27+08:00">
-                2020-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-14T17:18:34+08:00">
+                2020-08-14
               </time>
             
 
@@ -323,8 +325,8 @@ var _hmt = _hmt || [];
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/03/09/今天谁洗碗/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/09/今天谁洗碗/" itemprop="commentCount"></span>
+                <a href="/2020/08/14/kafka分区机制及压缩算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/14/kafka分区机制及压缩算法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -332,7 +334,7 @@ var _hmt = _hmt || [];
 
           
           
-             <span id="/2020/03/09/今天谁洗碗/" class="leancloud_visitors" data-flag-title="今天谁洗碗">
+             <span id="/2020/08/14/kafka分区机制及压缩算法/" class="leancloud_visitors" data-flag-title="kafka分区机制及压缩算法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -363,30 +365,38 @@ var _hmt = _hmt || [];
       
 
       
-        <p>今天是元宵节，蓝染和sellery在家自己做元宵吃，蓝染问sellery：老婆，你最喜欢吃什么馅的元宵啊？</p>
-<p>sellery说：我最喜欢吃草莓，你呢？</p>
-<p>蓝染说：我最喜欢吃榴莲，要不咱们用草莓加上榴莲再加三瓶醋做一份元宵吧？</p>
-<p>sellery一听：这个创意好！那咱们就开始吧。</p>
-<p>于是蓝染开始钻木取火，sellery开始用少林功夫揉面……</p>
-<p>没多一会，蓝染和sellery就合伙做出了正方形的元宵，美味极了……</p>
-<p>可是吃完元宵之后，一个横在蓝染和sellery之间多年的问题出现了！</p>
-<p>谁洗碗！！！</p>
-<a id="more"></a>
-<p>蓝染：“我比你大，这个碗应该你来洗。”</p>
-<p>sellery：“不，你是老公，这个碗应该你来洗。”</p>
-<p>蓝染：“不，你今天累坏了，这个碗应该你来洗。”</p>
-<p>sellery：“不，你有腰间盘突出，这个碗还是你洗吧。”</p>
-<p>蓝染：“那你还来大姨妈了呢，还是你洗吧。”</p>
-<p>sellery：“可是你也很想洗对不对？还是你来洗吧”</p>
-<p>……</p>
-<p>就在他们争执不下的时候，他们的宝宝从被子里掀开了一个小孔，满脸笑容说的对他们说：</p>
-<p>“能过过，不能过赶紧tm离，艹，睡个觉都你妈睡不好！”</p>
-<p>哦，这是昨天给宝宝讲过的《孔容让离》的故事中的桥段。</p>
-<p>虽然宝宝让他们离，但是蓝染和sellery情比金坚，怎么可能离？</p>
-<p>最后他们把年仅三岁的宝宝从被子里拽了出来，并强迫他把碗洗了。</p>
-<p>就这样，蓝染和sellery过上了幸福快乐的生活。</p>
-<p>再也没有烦恼。</p>
-<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/鹦鹉兄弟13.gif" alt=""></p>
+        <h4 id="生产者消息分区机制"><a href="#生产者消息分区机制" class="headerlink" title="生产者消息分区机制"></a>生产者消息分区机制</h4><h6 id="为什么分区"><a href="#为什么分区" class="headerlink" title="为什么分区"></a>为什么分区</h6><p>其实分区的作用就是提供负载均衡的能力，或者说对数据进行分区的主要原因，就是为了实现系统的高伸缩性（Scalability）。不同的分区能够被放置到不同节点的机器上，而数据的读写操作也都是针对分区这个粒度而进行的，这样每个节点的机器都能独立地执行各自分区的读写请求处理。并且，我们还可以通过添加新的节点机器来增加整体系统的吞吐量。</p>
+<h6 id="分区策略"><a href="#分区策略" class="headerlink" title="分区策略"></a>分区策略</h6><ul>
+<li><p>轮询策略</p>
+<p>也称 Round-robin 策略，即顺序分配。比如一个主题下有 3 个分区，那么第一条消息被发送到分区 0，第二条被发送到分区 1，第三条被发送到分区 2，以此类推。当生产第 4 条消息时又会重新开始，即将其分配到分区 0，就像下面这张图展示的那样。</p>
+<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/6c630aaf0b365115897231a4e0a7e1af.png" alt="img"></p>
+</li>
+<li><p>随机策略</p>
+<p>也称 Randomness 策略。所谓随机就是我们随意地将消息放置到任意一个分区上，如下面这张图所示。</p>
+<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/5b50b76efb8ada0f0779ac3275d215a3.png" alt="img"></p>
+</li>
+<li><p>按消息键保序策略</p>
+<p>Kafka 允许为每条消息定义消息键，简称为 Key。这个 Key 的作用非常大，它可以是一个有着明确业务含义的字符串，比如客户代码、部门编号或是业务 ID 等；也可以用来表征消息元数据。特别是在 Kafka 不支持时间戳的年代，在一些场景中，工程师们都是直接将消息创建时间封装进 Key 里面的。一旦消息被定义了 Key，那么你就可以保证同一个 Key 的所有消息都进入到相同的分区里面，由于每个分区下的消息处理都是有顺序的，故这个策略被称为按消息键保序策略，如下图所示。</p>
+<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/63aba008c3e3ad6b6dcc20464b600035.png" alt="img"></p>
+</li>
+</ul>
+<h4 id="Kafka压缩算法"><a href="#Kafka压缩算法" class="headerlink" title="Kafka压缩算法"></a>Kafka压缩算法</h4><p>说起压缩，我相信你一定不会感到陌生。它秉承了用时间去换空间的经典 trade-off 思想，具体来说就是用 CPU 时间去换磁盘空间或网络 I/O 传输量，希望以较小的 CPU 开销带来更少的磁盘占用或更少的网络 I/O 传输。在 Kafka 中，压缩也是用来做这件事的。</p>
+<h4 id="何时压缩"><a href="#何时压缩" class="headerlink" title="何时压缩"></a>何时压缩</h4><p>在 Kafka 中，压缩可能发生在两个地方：生产者端和 Broker 端。</p>
+<p>生产者程序中配置 compression.type 参数即表示启用指定类型的压缩算法。比如下面这段程序代码展示了如何构建一个开启 GZIP 的 Producer 对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"localhost:9092"</span>);</span><br><span class="line">props.put(<span class="string">"acks"</span>, <span class="string">"all"</span>);</span><br><span class="line">props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line"><span class="comment">// 开启GZIP压缩</span></span><br><span class="line">props.put(<span class="string">"compression.type"</span>, <span class="string">"gzip"</span>);</span><br><span class="line"></span><br><span class="line">Producer&lt;String, String&gt; producer = <span class="keyword">new</span> KafkaProducer&lt;&gt;(props);</span><br></pre></td></tr></table></figure>
+<p>这里比较关键的代码行是 props.put(“compression.type”, “gzip”)，它表明该 Producer 的压缩算法使用的是 GZIP。这样 Producer 启动后生产的每个消息集合都是经 GZIP 压缩过的，故而能很好地节省网络传输带宽以及 Kafka Broker 端的磁盘占用。</p>
+<p>在生产者端启用压缩是很自然的想法，那为什么我说在 Broker 端也可能进行压缩呢？其实大部分情况下 Broker 从 Producer 端接收到消息后仅仅是原封不动地保存而不会对其进行任何修改，但这里的“大部分情况”也是要满足一定条件的。有两种例外情况就可能让 Broker 重新压缩消息。</p>
+<p>情况一：Broker 端指定了和 Producer 端不同的压缩算法。</p>
+<p>先看一个例子。想象这样一个对话。Producer 说：“我要使用 GZIP 进行压缩。”</p>
+<p>Broker 说：“不好意思，我这边接收的消息必须使用 Snappy 算法进行压缩。”</p>
+<p>你看，这种情况下 Broker 接收到 GZIP 压缩消息后，只能解压缩然后使用 Snappy 重新压缩一遍。</p>
+<p>如果你翻开 Kafka 官网，你会发现 Broker 端也有一个参数叫 compression.type，和上面那个例子中的同名。但是这个参数的默认值是 producer，这表示 Broker 端会“尊重”Producer 端使用的压缩算法。可一旦你在 Broker 端设置了不同的 compression.type 值，就一定要小心了，因为可能会发生预料之外的压缩 / 解压缩操作，通常表现为 Broker 端 CPU 使用率飙升。</p>
+<p>情况二：Broker 端发生了消息格式转换。所谓的消息格式转换主要是为了兼容老版本的消费者程序。在一个生产环境中，Kafka 集群中同时保存多种版本的消息格式非常常见。为了兼容老版本的格式，Broker 端会对新版本消息执行向老版本格式的转换。这个过程中会涉及消息的解压缩和重新压缩。一般情况下这种消息格式转换对性能是有很大影响的，除了这里的压缩之外，它还让 Kafka 丧失了引以为豪的 Zero Copy 特性。</p>
+<p>所以尽量保证消息格式的统一吧，这样不仅可以避免不必要的解压缩 / 重新压缩，对提升其他方面的性能也大有裨益。</p>
+<h4 id="何时解压缩？"><a href="#何时解压缩？" class="headerlink" title="何时解压缩？"></a>何时解压缩？</h4><p>有压缩必有解压缩！通常来说解压缩发生在消费者程序中，也就是说 Producer 发送压缩消息到 Broker 后，Broker 照单全收并原样保存起来。当 Consumer 程序请求这部分消息时，Broker 依然原样发送出去，当消息到达 Consumer 端后，由 Consumer 自行解压缩还原成之前的消息。</p>
+<p>那么现在问题来了，Consumer 怎么知道这些消息是用何种压缩算法压缩的呢？</p>
+<p>其实答案就在消息中。Kafka 会将启用了哪种压缩算法封装进消息集合中，这样当 Consumer 读取到消息集合时，它自然就知道了这些消息使用的是哪种压缩算法。</p>
+<p>如果用一句话总结一下压缩和解压缩：Producer 端压缩、Broker 端保持、Consumer 端解压缩。</p>
 
       
     </div>
@@ -404,7 +414,7 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/瞎写/" rel="tag"># 瞎写</a>
+            <a href="/tags/kafka/" rel="tag"># kafka</a>
           
         </div>
       
@@ -417,8 +427,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/06/三好学生VS校园小霸王/" rel="next" title="三好学生VS校园小霸王">
-                <i class="fa fa-chevron-left"></i> 三好学生VS校园小霸王
+              <a href="/2020/08/13/kafka的参数配置/" rel="next" title="kafka的参数配置">
+                <i class="fa fa-chevron-left"></i> kafka的参数配置
               </a>
             
           </div>
@@ -426,10 +436,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/08/gitlab开启2FA双因子认证登录/" rel="prev" title="gitlab开启2FA双因子认证登录">
-                gitlab开启2FA双因子认证登录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,8 +490,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -549,6 +564,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#生产者消息分区机制"><span class="nav-number">1.</span> <span class="nav-text">生产者消息分区机制</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#为什么分区"><span class="nav-number">1.0.1.</span> <span class="nav-text">为什么分区</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#分区策略"><span class="nav-number">1.0.2.</span> <span class="nav-text">分区策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Kafka压缩算法"><span class="nav-number">2.</span> <span class="nav-text">Kafka压缩算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#何时压缩"><span class="nav-number">3.</span> <span class="nav-text">何时压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#何时解压缩？"><span class="nav-number">4.</span> <span class="nav-text">何时解压缩？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

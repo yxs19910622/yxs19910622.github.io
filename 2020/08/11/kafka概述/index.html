@@ -88,10 +88,10 @@
 <meta property="og:description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 kafka系统架构图">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/WX20200811-112552@2x.png">
-<meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200811114641733.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/18/63/18e487b7e64eeb8d0a487c289d83ab63.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200811114219473.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200811115343075.png">
-<meta property="og:updated_time" content="2020-08-13T07:09:51.848Z">
+<meta property="og:updated_time" content="2020-08-13T08:29:35.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka概述">
 <meta name="twitter:description" content="kafka 简介Apache Kafka 是一个快速、可扩展的、高吞吐的、可容错的分布式“发布-订阅”消息系统， 使用 Scala 与 Java 语言编写，能够将消息从一个端点传递到另一个端点，较之传统的消息中 间件(例如 ActiveMQ、RabbitMQ)，Kafka 具有高吞吐量、内置分区、支持消息副本和高容 错的特性，非常适合大规模消息处理应用程序。 kafka系统架构图">
@@ -372,8 +372,8 @@ var _hmt = _hmt || [];
 <p>如上图，一个kafka架构包括若干个Producer（服务器日志、业务数据、web前端产生的page view等），若干个Broker（kafka支持水平扩展，一般broker数量越多集群的吞吐量越大），若干个consumer group，一个Zookeeper集群（kafka通过Zookeeper管理集群配置、选举leader、consumer group发生变化时进行rebalance）。</p>
 <ul>
 <li><p>主题和分区</p>
-<p>在 Kafka 中，发布订阅的对象是主题（Topic），你可以为每个业务、每个应用甚至是每类数据都创建专属的主题。主题就好比数据库的表，或者文件系统里的文件夹。主题可以被分为若干个 分区。消息以追加的方式写入分区，然后以先入先出的顺序读取。 kafka通过分区来实现数据冗余和伸缩性。分区可以分布在不同的服务器上，也就是说， 一个主题可以横跨多个服务器，以此来提供比单个服务器更强大的性能。</p>
-<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200811114641733.png" alt="image-20200811114641733"></p>
+<p>在 Kafka 中，发布订阅的对象是主题（Topic），你可以为每个业务、每个应用甚至是每类数据都创建专属的主题。主题就好比数据库的表，或者文件系统里的文件夹。主题可以被分为若干个分区(Partition)。消息以追加的方式写入分区，然后以先入先出的顺序读取。主题下的每条消息只会保存在某一个分区中，而不会在多个分区中被保存多份。 kafka通过分区来实现数据冗余和伸缩性。分区可以分布在不同的服务器上，也就是说， 一个主题可以横跨多个服务器，以此来提供比单个服务器更强大的性能。</p>
+<p><img src="https://static001.geekbang.org/resource/image/18/63/18e487b7e64eeb8d0a487c289d83ab63.png" alt="img"></p>
 </li>
 <li><p>生产者和消费者</p>
 <p>kafka 的客户端被分为两种基本类型 : 生产者(Producer)和消费者(consumer), 除此之外还有其他高级API.</p>
@@ -530,7 +530,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
