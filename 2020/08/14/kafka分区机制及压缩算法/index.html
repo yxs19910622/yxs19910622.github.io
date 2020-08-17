@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/6c630aaf0b365115897231a4e0a7e1af.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/5b50b76efb8ada0f0779ac3275d215a3.png">
 <meta property="og:image" content="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/63aba008c3e3ad6b6dcc20464b600035.png">
-<meta property="og:updated_time" content="2020-08-17T02:34:13.672Z">
+<meta property="og:updated_time" content="2020-08-17T02:35:16.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka分区机制及压缩算法">
 <meta name="twitter:description" content="生产者消息分区机制为什么分区其实分区的作用就是提供负载均衡的能力，或者说对数据进行分区的主要原因，就是为了实现系统的高伸缩性（Scalability）。不同的分区能够被放置到不同节点的机器上，而数据的读写操作也都是针对分区这个粒度而进行的，这样每个节点的机器都能独立地执行各自分区的读写请求处理。并且，我们还可以通过添加新的节点机器来增加整体系统的吞吐量。 分区策略 轮询策略 也称 Round-ro">
@@ -370,6 +370,7 @@ var _hmt = _hmt || [];
 <li><p>轮询策略</p>
 <p>也称 Round-robin 策略，即顺序分配。比如一个主题下有 3 个分区，那么第一条消息被发送到分区 0，第二条被发送到分区 1，第三条被发送到分区 2，以此类推。当生产第 4 条消息时又会重新开始，即将其分配到分区 0，就像下面这张图展示的那样。</p>
 <p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/6c630aaf0b365115897231a4e0a7e1af.png" alt="img"></p>
+<a id="more"></a>
 </li>
 <li><p>随机策略</p>
 <p>也称 Randomness 策略。所谓随机就是我们随意地将消息放置到任意一个分区上，如下面这张图所示。</p>
