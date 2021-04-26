@@ -80,5 +80,6 @@ theme: next
 deploy:
   type: git
   # repo: https://github.com/yxs19910622/yxs19910622.github.io.git
-  repo: git@github.com:yxs19910622/yxs19910622.github.io.git
+  # repo: git@github.com:yxs19910622/yxs19910622.github.io.git
+  repo: git@e.coding.net:ppsnake/ppsnake.coding.me.git
   branch: master

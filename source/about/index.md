@@ -6,14 +6,13 @@ date: 2018-07-18 10:25:04
 
 ![](index/true.jpeg)
 
-<center>这是一个单纯的个人微博<br>作者是一个不正经的程序员
+<center>总有道理在心间可却无法履行</center>
 
-可能会写技术<br>一般还是瞎逼乱写</center>
 <br>
-<center style="color:#FCFCFC">愿你三冬暖 愿你春不寒
-愿你天黑有灯 下雨有伞
-愿你路上有人陪伴
+
+<center style="color:#FCFCFC">情深不寿，强极则辱，谦谦君子，温润如玉
 </center>
-<center style="color:#FCFCFC">你是非常可爱的人
-真应该遇到最好的人
-我也真希望我就是</center>
+
+
+
+
