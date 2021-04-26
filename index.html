@@ -534,17 +534,17 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="一-在sonatype提交新的申请"><a href="#一-在sonatype提交新的申请" class="headerlink" title="一. 在sonatype提交新的申请"></a>一. 在sonatype提交新的申请</h2><p>首先进入sonatype官网 <a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">https://issues.sonatype.org/secure/Dashboard.jspa</a> 没有帐号的注册一下就可以</p>
+          <h2 id="一-在sonatype提交新的申请"><a href="#一-在sonatype提交新的申请" class="headerlink" title="一. 在sonatype提交新的申请"></a>一. 在sonatype提交新的申请</h2><p>首先进入sonatype官网 <a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">https://issues.sonatype.org/secure/Dashboard.jspa</a> 没有帐号的注册一下就可以</p>
 <p>接着点击上方的create按钮 创建一个新的issue</p>
 <p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200918110906628.png" alt="image-20200918110906628" style="zoom:50%;"></p>
 <p>这里创建之后就等着 审核人员有回复的话会邮件提醒 一般是要求你验证域名或者github所有权</p>
-<p><img src="https://snake-blog-pic.oss-cn-hangzhou.aliyuncs.com/image-20200918111113946.png" alt="image-20200918111113946" style="zoom:50%;"></p>
-<p>等到没问题了他会将issue状态置为<strong>RESOLVED</strong> 并提醒你成功后回来评论下</p>
-<h2 id="二-配置maven"><a href="#二-配置maven" class="headerlink" title="二. 配置maven"></a>二. 配置maven</h2><p>在settings.xml文件的servers标签下新增</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">username</span>&gt;</span>sonatype账号<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">password</span>&gt;</span>sonatype密码<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">username</span>&gt;</span>sonatype账号<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">password</span>&gt;</span>sonatype密码<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="三-生成密钥"><a href="#三-生成密钥" class="headerlink" title="三. 生成密钥"></a>三. 生成密钥</h2>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/18/jar包发布到maven中央仓库/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
