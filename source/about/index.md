@@ -6,7 +6,7 @@ date: 2018-07-18 10:25:04
 
 ![](index/true.jpeg)
 
-<center>总有道理在心间可却无法履行</center>
+<center>但行好事 莫问前程</center>
 
 <br>
 
