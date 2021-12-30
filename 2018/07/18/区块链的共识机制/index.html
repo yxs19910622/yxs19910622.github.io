@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="区块链," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之前我们说到的运作方式,打包和广播,正是区块链最核心的技术内容之一:共识机制 分布式系统的经典问题: 拜占庭将军问题拜占庭将军问题是一个虚构出来的,可以方便通俗的介绍分布式系统所面临的难题.这边不做表述. 我们还是回到村子当中,随着村子和人口的发展,大村子变成了十一个小村子,并分散在各地,村子间只能靠信鸽来通讯.大家约定了每年都举办一个相亲大会,每年从 A 村或 B 村中选择一个,得票多的胜出.由">
+<meta name="keywords" content="区块链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链的共识机制">
+<meta property="og:url" content="https://snakepp.com/2018/07/18/区块链的共识机制/index.html">
+<meta property="og:site_name" content="不吃香菜">
+<meta property="og:description" content="之前我们说到的运作方式,打包和广播,正是区块链最核心的技术内容之一:共识机制 分布式系统的经典问题: 拜占庭将军问题拜占庭将军问题是一个虚构出来的,可以方便通俗的介绍分布式系统所面临的难题.这边不做表述. 我们还是回到村子当中,随着村子和人口的发展,大村子变成了十一个小村子,并分散在各地,村子间只能靠信鸽来通讯.大家约定了每年都举办一个相亲大会,每年从 A 村或 B 村中选择一个,得票多的胜出.由">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-18T10:03:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="区块链的共识机制">
+<meta name="twitter:description" content="之前我们说到的运作方式,打包和广播,正是区块链最核心的技术内容之一:共识机制 分布式系统的经典问题: 拜占庭将军问题拜占庭将军问题是一个虚构出来的,可以方便通俗的介绍分布式系统所面临的难题.这边不做表述. 我们还是回到村子当中,随着村子和人口的发展,大村子变成了十一个小村子,并分散在各地,村子间只能靠信鸽来通讯.大家约定了每年都举办一个相亲大会,每年从 A 村或 B 村中选择一个,得票多的胜出.由">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://snakepp.com/2018/07/18/区块链的共识机制/"/>
+
+
+
+
+
+  <title>区块链的共识机制 | 不吃香菜</title>
+  
+
+
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5046201aa5ebcc7dd75200bb77ebb9a5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不吃香菜</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">freedom</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://snakepp.com/2018/07/18/区块链的共识机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="PP">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/pp.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不吃香菜">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">区块链的共识机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T16:50:41+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/区块链/" itemprop="url" rel="index">
+                    <span itemprop="name">区块链</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/18/区块链的共识机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/18/区块链的共识机制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/18/区块链的共识机制/" class="leancloud_visitors" data-flag-title="区块链的共识机制">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前我们说到的运作方式,打包和广播,正是区块链最核心的技术内容之一:共识机制</p>
+<h2 id="分布式系统的经典问题-拜占庭将军问题"><a href="#分布式系统的经典问题-拜占庭将军问题" class="headerlink" title="分布式系统的经典问题: 拜占庭将军问题"></a>分布式系统的经典问题: 拜占庭将军问题</h2><p><a href="https://baike.baidu.com/item/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98/265656?fr=aladdin" target="_blank" rel="noopener">拜占庭将军问题</a>是一个虚构出来的,可以方便通俗的介绍分布式系统所面临的难题.这边不做表述.</p>
+<p>我们还是回到村子当中,随着村子和人口的发展,大村子变成了十一个小村子,并分散在各地,村子间只能靠信鸽来通讯.<br>大家约定了每年都举办一个相亲大会,每年从 A 村或 B 村中选择一个,得票多的胜出.<br>由于村子相隔甚远,没办法靠一只信鸽传送到每个村子,这个就必须有个村子作为中转站来代为传输,也就意味着这个村子可以读到其他村子的投票信息.<br><a id="more"></a><br>那么,下面两个问题就会出现:</p>
+<ul>
+<li>村子的投票行为不一致,比如 E 村发送给一个村子说自己投了 A,但是对另外一个村子说自己投了 B</li>
+<li>中继村舞弊,篡改投票消息</li>
+</ul>
+<p>上面的问题可以看做简化版的拜占庭将军问题<br>我们再回头看区块链,本质上也是分布式系统的一种,其共识机制就是为上述问题而提出的解决方案.</p>
+<h2 id="什么是区块链共识机制"><a href="#什么是区块链共识机制" class="headerlink" title="什么是区块链共识机制?"></a>什么是区块链共识机制?</h2><p>共识机制是区块链最核心的组成要素之一,它决定了区块链的业务吞吐量,交易速度,准入门槛等,是最为关键的要素之一.<br>共识机制主要解决了两个问题:</p>
+<ul>
+<li>谁有权利</li>
+<li>作弊问题</li>
+</ul>
+<p>在中心化的记账场景下,可以简化为大家信任中心记账者.<br>而在分布式记账的场景下,首选要解决的是谁有权利记账,其次是如何避免记账者作弊.</p>
+<h2 id="最经典入门型共识机制-PoW工作量证明"><a href="#最经典入门型共识机制-PoW工作量证明" class="headerlink" title="最经典入门型共识机制:PoW工作量证明"></a>最经典入门型共识机制:PoW工作量证明</h2><p>在PoW 这种机制中,计算资源(算力)是决定记账权的唯一因素,与之对应的,便是计算难度.<br>计算难度又被称为挖矿难度,计算难度是区块链为了控制产生答案的速度,比如平均10小时就有一个答案产生</p>
+<p>比如现在大家都一样做题,但是张三买了一个算盘,其他村民都是用手指,那么他的算力就大大提成,也就是说张三有很大概率能获取记账权,那么李四的个人诚实性,便成为了系统的唯一破绽.<br>比如张三在第一次记账时篡改了交易信息,第二次还是他记账,还继续篡改,那么两次修改不会冲突,就形成了假账,这就是中心化风险.</p>
+<p>那么怎么避免作弊者呢?答案还是算力.<br>如果一个作弊者想要修改信息,首先要获得记账权,也就是装信封的权利.<br>而在 PoW 中,营销记账权的唯一因素就是计算资源的大小,如果要篡改交易,只能投入大量的算力与整个系统中的其他人做对抗,这是十分困难的,尤其是在整个系统中有一定基础计算资源的情况下.</p>
+<p>PoW中一个有趣的设计是激励机制,在 PoW 共识下,我们假设所有的参与者都是理性的,单纯逐利,不考虑其他因素.有了理性的前提,共识机制会给每个诚实的记账者给予奖励,这个设计可以抗击作弊收益的问题.</p>
+<p>怎么进行抗击的呢?整个过程是这样的,理性的人如果作弊,篡改账本肯定要投入成本,也就是计算资源,收益就是篡改账本获得的收益去掉投入成本,这个收益往往小于诚实的记账者所获得的收益,所以作弊者在作弊时投入的资源过大,得不偿失.</p>
+<h2 id="PoW解决双花攻击"><a href="#PoW解决双花攻击" class="headerlink" title="PoW解决双花攻击"></a>PoW解决双花攻击</h2><p>刚刚我们说的作弊的收益小于诚实计算的收益,这一点其实可以解决一个区块链领域的著名问题:双花攻击</p>
+<p>双花攻击是指一个代币被花了两次,在这任何一个区块链系统中都是不被允许的,如果避免了双花问题,就能避免作弊收益大于诚实计算的问题,因为发起共计需要同时控制你的密钥和你的算力资源.</p>
+<p>我们之前提到的广播分为两种,一种是未确认的Transaction,另一个是装在信封里已被确认的Transaction<br>所有的记账节点都会遵循两个规则</p>
+<ul>
+<li>一个代币如果已经被花费,那么就会被标记为已花费,如果再次接收到合格代币被花费的请求,那么记账节点会拒绝打包这笔交易</li>
+<li>如果同时接到两个信封,这两个信封中装的两笔交易出现了一个代币被花费两次的情况,这种情况就是我们所说的分叉,那么就选择挖矿难度较大的那个信封</li>
+</ul>
+<p>规则一避免了未确认的交易出现双花,规则二避免了已经确认的交易中(信封)出现双花.</p>
+<p>假设作弊者的算力占整个系统的30%,那么连续两次获得记账权的概率为9%,看起来还是挺高的,那如果是连续6次获得呢?就降到了万分之七.</p>
+<p>在比特币中,这个6次代表了6次确认,表示连续6个块过去了,如果我的交易没有被双花,那么他被篡改1可能性就越来越小,最后变的几乎不可能被篡改,这也是不可被篡改的说话的由来.</p>
+<p>试想,如果作弊者花了大量的成本获取了系统30%的算力,最有只有万分之七的概率获得篡改的可能,比起作弊,还不如诚实记账的收益高.</p>
+<p>区块链的入门机制 PoW,他其实也是目前区块链领域中使用最广泛的,应用最成熟共识机制.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/区块链/" rel="tag"># 区块链</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/10/区块链的运作方式/" rel="next" title="区块链的运作方式">
+                <i class="fa fa-chevron-left"></i> 区块链的运作方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/19/区块链的应用类型/" rel="prev" title="区块链的应用类型">
+                区块链的应用类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/pp.gif"
+                alt="PP" />
+            
+              <p class="site-author-name" itemprop="name">PP</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式系统的经典问题-拜占庭将军问题"><span class="nav-number">1.</span> <span class="nav-text">分布式系统的经典问题: 拜占庭将军问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是区块链共识机制"><span class="nav-number">2.</span> <span class="nav-text">什么是区块链共识机制?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最经典入门型共识机制-PoW工作量证明"><span class="nav-number">3.</span> <span class="nav-text">最经典入门型共识机制:PoW工作量证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PoW解决双花攻击"><span class="nav-number">4.</span> <span class="nav-text">PoW解决双花攻击</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PP</span>
+
+  
+</div>
+
+
+<span class="post-meta-divider">Bal'a dash, malanore</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'qY9SdasK3CBoLky8tl7oi37v-gzGzoHsz',
+        appKey: 'G35HiqPWemJyUzIdX0OSC9ce',
+        placeholder: 'freedom',
+        avatar:'wavatar',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qY9SdasK3CBoLky8tl7oi37v-gzGzoHsz", "G35HiqPWemJyUzIdX0OSC9ce");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
